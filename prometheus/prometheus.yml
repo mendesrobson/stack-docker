@@ -1,0 +1,24 @@
+
+# ------------------------------------------------------------------------------------------------
+# SERVIÇOS PRECISA DO DOCKERFILE PARA FUNCIONAR
+# ------------------------------------------------------------------------------------------------
+# global:
+#   scrape_interval: 15s
+
+# scrape_configs:
+#   - job_name: 'dotnet-app'
+#     static_configs:
+#       - targets: ['dotnet-app:8080']
+ # ------------------------------------------------------------------------------------------------
+
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'dotnet-app'
+    static_configs:
+      - targets: ['host.docker.internal:5000'] # Mudei para host.docker.internal
+
+  - job_name: 'angular-app'
+    static_configs:
+      - targets: ['host.docker.internal:4200'] # Adicionado para monitorar o Angular
