@@ -38,9 +38,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: senha@123
+      POSTGRES_DB: db_postgres
     volumes:
       - ./database/data:/var/lib/postgresql/data
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -64,6 +64,9 @@ services:
     ports:
       - "5672:5672" # Porta padrão para comunicação AMQP
       - "15672:15672" # Porta da interface de gerenciamento
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin # Define um novo usuário
+      - RABBITMQ_DEFAULT_PASS=admin # Define uma nova senha
     volumes:
       - ./rabbitmq/data:/var/lib/rabbitmq
 
